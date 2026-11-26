@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming Hub — Top 4 Trending Games</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">GH</span>
+          <span>Gaming Hub</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trending.html" aria-current="page">Trending</a></li>
+            <li><a href="gta6.html">GTA 6</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section-header">
+        <div>
+          <span class="badge">Live Rankings</span>
+          <h1 class="section-title" style="margin-top: 0.6rem;">
+            Top 4 Trending Games
+          </h1>
+          <p class="section-subtitle">
+            Filter by genre or save titles to your local watchlist.
+          </p>
+        </div>
+        <a class="btn btn-secondary" href="index.html">&larr; Back to Home</a>
+      </section>
+
+      <!-- Filter & Watchlist Controls -->
+      <div class="toolbar" role="region" aria-label="Trending filters and watchlist">
+        <div class="filter-group" role="group" aria-label="Filter by genre">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">
+            All (4)
+          </button>
+          <button class="filter-btn" type="button" data-filter="rpg" aria-pressed="false">
+            RPG
+          </button>
+          <button class="filter-btn" type="button" data-filter="shooter" aria-pressed="false">
+            Shooter
+          </button>
+        </div>
+        <div class="watchlist-counter">
+          Saved in Watchlist: <strong id="watchlist-count">0</strong>
+        </div>
+      </div>
+
+      <!-- Top 4 Trending Cards -->
+      <section class="card-grid-2" aria-label="Trending games list">
+        <article class="card" data-category="rpg">
+          <div>
+            <div class="card-top">
+              <span class="badge badge-rank">#1 Trending</span>
+              <span class="badge">Action RPG</span>
+            </div>
+            <h2 class="card-title">Monster Hunter Wilds</h2>
+            <p class="card-desc">
+              Track apex monsters across shifting ecosystems solo or in 4-hunter co-op squads.
+            </p>
+            <dl class="stat-list">
+              <div class="stat-item">
+                <dt>Peak Players</dt>
+                <dd>1.3M+</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Community Score</dt>
+                <dd>9.2 / 10</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Platforms</dt>
+                <dd>PC, PS5, Xbox Series X|S</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="actions-row">
+            <button
+              class="btn btn-secondary btn-watchlist"
+              type="button"
+              data-watchlist-id="monster-hunter-wilds"
+              aria-pressed="false"
+            >
+              + Watchlist
+            </button>
+          </div>
+        </article>
+
+        <article class="card" data-category="shooter">
+          <div>
+            <div class="card-top">
+              <span class="badge badge-rank">#2 Trending</span>
+              <span class="badge">Hero Shooter</span>
+            </div>
+            <h2 class="card-title">Marvel Rivals</h2>
+            <p class="card-desc">
+              Competitive 6v6 matches featuring team-up abilities and dynamic destructible arenas.
+            </p>
+            <dl class="stat-list">
+              <div class="stat-item">
+                <dt>Active Players</dt>
+                <dd>420K+</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Community Score</dt>
+                <dd>8.8 / 10</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Platforms</dt>
+                <dd>PC, PS5, Xbox Series X|S</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="actions-row">
+            <button
+              class="btn btn-secondary btn-watchlist"
+              type="button"
+              data-watchlist-id="marvel-rivals"
+              aria-pressed="false"
+            >
+              + Watchlist
+            </button>
+          </div>
+        </article>
+
+        <article class="card" data-category="rpg">
+          <div>
+            <div class="card-top">
+              <span class="badge badge-rank">#3 Trending</span>
+              <span class="badge">Tactical RPG</span>
+            </div>
+            <h2 class="card-title">Baldur's Gate 3</h2>
+            <p class="card-desc">
+              Deep party customization, reactive storytelling, and tactical turn-based encounters.
+            </p>
+            <dl class="stat-list">
+              <div class="stat-item">
+                <dt>Active Players</dt>
+                <dd>110K+</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Community Score</dt>
+                <dd>9.8 / 10</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Platforms</dt>
+                <dd>PC, PS5, Xbox Series X|S</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="actions-row">
+            <button
+              class="btn btn-secondary btn-watchlist"
+              type="button"
+              data-watchlist-id="baldurs-gate-3"
+              aria-pressed="false"
+            >
+              + Watchlist
+            </button>
+          </div>
+        </article>
+
+        <article class="card" data-category="shooter">
+          <div>
+            <div class="card-top">
+              <span class="badge badge-rank">#4 Trending</span>
+              <span class="badge">Tactical FPS</span>
+            </div>
+            <h2 class="card-title">Counter-Strike 2</h2>
+            <p class="card-desc">
+              High-stakes round-based tactical competition with premier matchmaking and esports seasons.
+            </p>
+            <dl class="stat-list">
+              <div class="stat-item">
+                <dt>Active Players</dt>
+                <dd>1.4M+</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Community Score</dt>
+                <dd>9.0 / 10</dd>
+              </div>
+              <div class="stat-item">
+                <dt>Platforms</dt>
+                <dd>PC (Steam)</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="actions-row">
+            <button
+              class="btn btn-secondary btn-watchlist"
+              type="button"
+              data-watchlist-id="counter-strike-2"
+              aria-pressed="false"
+            >
+              + Watchlist
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <p id="filter-empty" class="section-subtitle is-hidden">
+        No games match the selected filter.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Gaming Hub &mdash; Group 09</span>
+        <a href="gta6.html">Check out the GTA 6 Spotlight &rarr;</a>
+      </div>
+    </footer>
+  </body>
+</html>
