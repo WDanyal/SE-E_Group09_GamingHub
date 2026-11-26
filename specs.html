@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specs — Gaming Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="consoles.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">GH</span>
+        <span>Gaming Hub</span>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        Menu
+      </button>
+
+      <nav aria-label="Primary navigation">
+        <ul id="primary-nav" class="nav-list" data-nav-list>
+          <li><a href="consoles.html" class="nav-link">Consoles</a></li>
+          <li><a href="gear.html" class="nav-link">Gear</a></li>
+          <li><a href="specs.html" class="nav-link active" aria-current="page">Specs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Hardware Reference</span>
+        <h1 class="page-title">System &amp; Hardware Specs</h1>
+        <p class="page-subtitle">
+          Readable specification tiers for gaming PCs alongside core console internals—designed for quick resolution, memory, and storage comparison.
+        </p>
+
+        <div class="filter-bar" role="group" aria-label="Filter hardware specifications">
+          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All Hardware</button>
+          <button type="button" class="filter-btn" data-filter="pc" aria-pressed="false">PC Build Tiers</button>
+          <button type="button" class="filter-btn" data-filter="console" aria-pressed="false">Console Internals</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Specification Profiles</h2>
+            <p class="section-desc">Use "Pin to Compare" on any card to highlight profiles side by side.</p>
+          </div>
+          <span class="result-count" data-result-count></span>
+        </div>
+
+        <div class="card-grid" data-filter-grid>
+          <article class="card" data-category="pc">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Entry 1080p PC Tier</h3>
+                <p class="card-meta">Balanced Esports &amp; Indie Rig</p>
+              </div>
+              <span class="badge">1080p Target</span>
+            </div>
+            <p class="card-summary">
+              Efficient 6-core platform tuned for 1080p high-refresh competitive play and smooth 60 fps modern releases.
+            </p>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt class="spec-label">CPU</dt>
+                <dd class="spec-value">6-Core / 12-Thread (Ryzen 5 / i5)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">GPU</dt>
+                <dd class="spec-value">8 GB Class (RTX 4060 / RX 7600)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Memory</dt>
+                <dd class="spec-value">16 GB DDR4 / DDR5</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Storage</dt>
+                <dd class="spec-value">1 TB PCIe 4.0 NVMe</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Power Supply</dt>
+                <dd class="spec-value">550W–650W 80+ Bronze/Gold</dd>
+              </div>
+            </dl>
+            <p class="card-note">
+              <strong>Performance Note:</strong> Hits 144+ fps in competitive titles and 60+ fps in AAA games at 1080p High.
+            </p>
+            <button type="button" class="card-action" data-pin-card aria-pressed="false">Pin to Compare</button>
+          </article>
+
+          <article class="card" data-category="pc">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Mid-Range 1440p PC Tier</h3>
+                <p class="card-meta">High-Refresh Sweet Spot</p>
+              </div>
+              <span class="badge badge--accent">1440p Target</span>
+            </div>
+            <p class="card-summary">
+              The most balanced desktop build for sharp 1440p monitors, combining 12–16 GB VRAM headroom with fast DDR5 memory.
+            </p>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt class="spec-label">CPU</dt>
+                <dd class="spec-value">8-Core / 16-Thread (7700X / i5-14600K)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">GPU</dt>
+                <dd class="spec-value">12–16 GB (RTX 4070 Super / RX 7800 XT)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Memory</dt>
+                <dd class="spec-value">32 GB DDR5-6000</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Storage</dt>
+                <dd class="spec-value">2 TB PCIe 4.0 NVMe</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Power Supply</dt>
+                <dd class="spec-value">750W 80+ Gold (ATX 3.0)</dd>
+              </div>
+            </dl>
+            <p class="card-note">
+              <strong>Performance Note:</strong> Sustains 90–140 fps at 1440p Ultra with DLSS/FSR upscaling available for ray tracing.
+            </p>
+            <button type="button" class="card-action" data-pin-card aria-pressed="false">Pin to Compare</button>
+          </article>
+
+          <article class="card" data-category="pc">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Enthusiast 4K PC Tier</h3>
+                <p class="card-meta">Flagship Workstation &amp; Gaming</p>
+              </div>
+              <span class="badge badge--emerald">4K Target</span>
+            </div>
+            <p class="card-summary">
+              Uncompromised 4K rendering, heavy ray tracing, and creator workloads backed by 3D V-Cache or high-core-count CPUs.
+            </p>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt class="spec-label">CPU</dt>
+                <dd class="spec-value">8-Core 3D V-Cache / 16-Core Flagship</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">GPU</dt>
+                <dd class="spec-value">16–24 GB (RTX 4080 Super / 4090)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Memory</dt>
+                <dd class="spec-value">32–64 GB DDR5-6000 CL30</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Storage</dt>
+                <dd class="spec-value">2–4 TB PCIe 4.0 / 5.0 NVMe</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Power Supply</dt>
+                <dd class="spec-value">850W–1000W 80+ Gold/Platinum</dd>
+              </div>
+            </dl>
+            <p class="card-note">
+              <strong>Performance Note:</strong> Built for native or upscaled 4K 120+ Hz displays and demanding path-traced titles.
+            </p>
+            <button type="button" class="card-action" data-pin-card aria-pressed="false">Pin to Compare</button>
+          </article>
+
+          <article class="card" data-category="console">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">PlayStation 5 Internals</h3>
+                <p class="card-meta">Custom AMD Zen 2 + RDNA 2 APU</p>
+              </div>
+              <span class="badge badge--accent">Console</span>
+            </div>
+            <p class="card-summary">
+              Unified memory architecture paired with custom hardware decompression blocks for near-instant asset streaming.
+            </p>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt class="spec-label">CPU</dt>
+                <dd class="spec-value">8-Core Zen 2 @ up to 3.5 GHz</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">GPU</dt>
+                <dd class="spec-value">36 CUs RDNA 2 (10.28 TFLOPS)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Unified RAM</dt>
+                <dd class="spec-value">16 GB GDDR6 (448 GB/s)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">SSD Throughput</dt>
+                <dd class="spec-value">5.5 GB/s Raw / 8–9 GB/s Comp.</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Typical Power</dt>
+                <dd class="spec-value">~200W In-Game</dd>
+              </div>
+            </dl>
+            <p class="card-note">
+              <strong>Architecture Note:</strong> Variable-frequency boost allocates power dynamically between CPU and GPU.
+            </p>
+            <button type="button" class="card-action" data-pin-card aria-pressed="false">Pin to Compare</button>
+          </article>
+
+          <article class="card" data-category="console">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Xbox Series X Internals</h3>
+                <p class="card-meta">Custom AMD Zen 2 + RDNA 2 APU</p>
+              </div>
+              <span class="badge badge--emerald">Console</span>
+            </div>
+            <p class="card-summary">
+              Fixed-clock 52-CU graphics engine with split-bandwidth GDDR6 memory designed for consistent native resolution targets.
+            </p>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt class="spec-label">CPU</dt>
+                <dd class="spec-value">8-Core Zen 2 @ 3.8 GHz (3.6 SMT)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">GPU</dt>
+                <dd class="spec-value">52 CUs RDNA 2 (12.15 TFLOPS)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Unified RAM</dt>
+                <dd class="spec-value">16 GB GDDR6 (10 GB @ 560 GB/s)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">SSD Throughput</dt>
+                <dd class="spec-value">2.4 GB/s Raw / 4.8 GB/s Comp.</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Typical Power</dt>
+                <dd class="spec-value">~170W–210W In-Game</dd>
+              </div>
+            </dl>
+            <p class="card-note">
+              <strong>Architecture Note:</strong> Velocity Architecture streams textures directly on demand to stretch memory efficiency.
+            </p>
+            <button type="button" class="card-action" data-pin-card aria-pressed="false">Pin to Compare</button>
+          </article>
+
+          <article class="card" data-category="console">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Handheld APU Class</h3>
+                <p class="card-meta">Steam Deck OLED / Z1 Extreme Reference</p>
+              </div>
+              <span class="badge badge--amber">Portable</span>
+            </div>
+            <p class="card-summary">
+              Low-wattage monolithic APUs balancing battery longevity (15W) against plugged-in burst performance (25–30W).
+            </p>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt class="spec-label">CPU</dt>
+                <dd class="spec-value">4–8 Cores (Zen 2 / Zen 4)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">GPU</dt>
+                <dd class="spec-value">8–12 CUs (RDNA 2 / RDNA 3)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Unified RAM</dt>
+                <dd class="spec-value">16–24 GB LPDDR5 / LPDDR5X</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">Storage</dt>
+                <dd class="spec-value">M.2 NVMe (2230 / 2280)</dd>
+              </div>
+              <div class="spec-row">
+                <dt class="spec-label">TDP Envelope</dt>
+                <dd class="spec-value">4W–30W Scalable</dd>
+              </div>
+            </dl>
+            <p class="card-note">
+              <strong>Architecture Note:</strong> Frame limiters (40–45 fps) and FSR scaling double effective battery life on the move.
+            </p>
+            <button type="button" class="card-action" data-pin-card aria-pressed="false">Pin to Compare</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Side-by-Side Specification Matrix</h2>
+            <p class="section-desc">Direct comparison across PC tiers and current-generation flagship consoles.</p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Spec Metric</th>
+                <th scope="col">Entry 1080p PC</th>
+                <th scope="col">Mid-Range 1440p PC</th>
+                <th scope="col">Enthusiast 4K PC</th>
+                <th scope="col">Flagship Console</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">CPU Class</th>
+                <td class="mono">6-Core / 12-Thread</td>
+                <td class="mono">8-Core / 16-Thread</td>
+                <td class="mono">8–16 Core Flagship</td>
+                <td class="mono">8-Core Zen 2</td>
+              </tr>
+              <tr>
+                <th scope="row">VRAM / Graphics</th>
+                <td class="mono">8 GB Dedicated</td>
+                <td class="mono">12–16 GB Dedicated</td>
+                <td class="mono">16–24 GB Dedicated</td>
+                <td class="mono">Shared 16 GB GDDR6</td>
+              </tr>
+              <tr>
+                <th scope="row">System Memory</th>
+                <td class="mono">16 GB DDR4/DDR5</td>
+                <td class="mono">32 GB DDR5</td>
+                <td class="mono">32–64 GB DDR5</td>
+                <td class="mono">16 GB Unified Pool</td>
+              </tr>
+              <tr>
+                <th scope="row">Storage Speed</th>
+                <td class="mono">3.5–5.0 GB/s NVMe</td>
+                <td class="mono">5.0–7.0 GB/s NVMe</td>
+                <td class="mono">7.0+ GB/s NVMe</td>
+                <td class="mono">2.4–5.5 GB/s Custom</td>
+              </tr>
+              <tr>
+                <th scope="row">Target Experience</th>
+                <td>1080p High / 60–144 fps</td>
+                <td>1440p Ultra / 90–144 fps</td>
+                <td>4K High–Ultra / 120+ fps</td>
+                <td>Upscaled 4K / 60–120 fps</td>
+              </tr>
+              <tr>
+                <th scope="row">Upgradeability</th>
+                <td>Full component swaps</td>
+                <td>Full component swaps</td>
+                <td>Full component swaps</td>
+                <td>Storage expansion only</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand"><strong>Gaming Hub</strong> — Clean hardware &amp; platform reference.</p>
+      <nav aria-label="Footer navigation" class="footer-links">
+        <a href="consoles.html">Consoles</a>
+        <a href="gear.html">Gear</a>
+        <a href="specs.html" class="active">Specs</a>
+      </nav>
+      <p class="footer-copy">Built with semantic HTML, shared CSS, and vanilla JavaScript.</p>
+    </div>
+  </footer>
+</body>
+</html>
