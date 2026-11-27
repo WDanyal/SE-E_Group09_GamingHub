@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genres — Gaming Hub</title>
+    <link rel="stylesheet" href="../css/genres.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">GH</span>
+          <span>Gaming Hub</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Toggle navigation"
+        >
+          Menu
+        </button>
+        <nav id="primary-nav" aria-label="Primary">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="../index.html">Home</a></li>
+            <li><a class="nav-link" href="news.html">News</a></li>
+            <li>
+              <a class="nav-link active" href="genres.html" aria-current="page"
+                >Genres</a
+              >
+            </li>
+            <li><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="page-header">
+        <span class="page-eyebrow">Browse By Style</span>
+        <h1>Game Genres</h1>
+        <p class="page-lead">
+          Select a genre card or filter tab below to explore top-rated titles
+          across Action, RPG, FPS, Sports/Racing, and Adventure.
+        </p>
+      </section>
+
+      <section aria-label="Genre overview cards">
+        <div class="section-heading">
+          <h2>Categories</h2>
+        </div>
+
+        <div class="genre-cards-grid" role="group" aria-label="Genre cards">
+          <button
+            class="genre-card"
+            type="button"
+            data-genre="action"
+            aria-pressed="false"
+          >
+            <span class="genre-card-title">Action</span>
+            <span class="genre-card-desc">
+              Fast combat, tight parries, and high-tempo boss encounters.
+            </span>
+          </button>
+
+          <button
+            class="genre-card"
+            type="button"
+            data-genre="rpg"
+            aria-pressed="false"
+          >
+            <span class="genre-card-title">RPG</span>
+            <span class="genre-card-desc">
+              Deep character builds, branching choices, and rich worlds.
+            </span>
+          </button>
+
+          <button
+            class="genre-card"
+            type="button"
+            data-genre="fps"
+            aria-pressed="false"
+          >
+            <span class="genre-card-title">FPS</span>
+            <span class="genre-card-desc">
+              Precision gunplay, tactical maps, and competitive squads.
+            </span>
+          </button>
+
+          <button
+            class="genre-card"
+            type="button"
+            data-genre="sports-racing"
+            aria-pressed="false"
+          >
+            <span class="genre-card-title">Sports / Racing</span>
+            <span class="genre-card-desc">
+              Simulation physics, lap telemetry, and stadium rivalries.
+            </span>
+          </button>
+
+          <button
+            class="genre-card"
+            type="button"
+            data-genre="adventure"
+            aria-pressed="false"
+          >
+            <span class="genre-card-title">Adventure</span>
+            <span class="genre-card-desc">
+              Atmospheric exploration, puzzles, and story-first journeys.
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section aria-label="Filtered games directory">
+        <div
+          class="filter-bar"
+          role="group"
+          aria-label="Filter games by genre"
+        >
+          <button
+            class="filter-btn active"
+            type="button"
+            data-genre="all"
+            aria-pressed="true"
+          >
+            All Genres
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-genre="action"
+            aria-pressed="false"
+          >
+            Action
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-genre="rpg"
+            aria-pressed="false"
+          >
+            RPG
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-genre="fps"
+            aria-pressed="false"
+          >
+            FPS
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-genre="sports-racing"
+            aria-pressed="false"
+          >
+            Sports / Racing
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-genre="adventure"
+            aria-pressed="false"
+          >
+            Adventure
+          </button>
+        </div>
+
+        <div class="section-heading">
+          <h2>Featured Titles</h2>
+          <span id="games-count" class="results-count">10 games</span>
+        </div>
+
+        <div id="games-grid" class="card-grid">
+          <article class="card game-card" data-genre="action">
+            <div class="card-meta">
+              <span class="badge">Action</span>
+              <span>PC · PS5</span>
+            </div>
+            <h3 class="card-title">Crimson Blade: Zero</h3>
+            <p class="card-text">
+              Fluid melee combat set in a rain-soaked neo-industrial citadel
+              with zero-cooldown weapon switching.
+            </p>
+            <div class="card-footer">
+              <span>Single-Player</span>
+              <span class="rating-pill">9.2 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="action">
+            <div class="card-meta">
+              <span class="badge">Action</span>
+              <span>PC · Xbox · PS5</span>
+            </div>
+            <h3 class="card-title">Iron Tempest</h3>
+            <p class="card-text">
+              Mech-scale aerial skirmishes where modular armor tuning defines
+              every mission approach.
+            </p>
+            <div class="card-footer">
+              <span>Co-op &amp; Solo</span>
+              <span class="rating-pill">8.8 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="rpg">
+            <div class="card-meta">
+              <span class="badge">RPG</span>
+              <span>PC · PS5</span>
+            </div>
+            <h3 class="card-title">Hollow Crown</h3>
+            <p class="card-text">
+              A dark-fantasy tactical RPG featuring turn-based party synergy and
+              hundreds of hand-crafted quests.
+            </p>
+            <div class="card-footer">
+              <span>Story Campaign</span>
+              <span class="rating-pill">9.4 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="rpg">
+            <div class="card-meta">
+              <span class="badge">RPG</span>
+              <span>PC · Xbox</span>
+            </div>
+            <h3 class="card-title">Starfall Odyssey</h3>
+            <p class="card-text">
+              Chart uncharted star systems, recruit a custom crew, and shape
+              faction politics across the frontier.
+            </p>
+            <div class="card-footer">
+              <span>Open Galaxy</span>
+              <span class="rating-pill">9.0 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="fps">
+            <div class="card-meta">
+              <span class="badge">FPS</span>
+              <span>PC</span>
+            </div>
+            <h3 class="card-title">Valor Front</h3>
+            <p class="card-text">
+              Five-on-five tactical shooter built around clean map sightlines,
+              utility timing, and 128-tick servers.
+            </p>
+            <div class="card-footer">
+              <span>Competitive 5v5</span>
+              <span class="rating-pill">9.1 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="fps">
+            <div class="card-meta">
+              <span class="badge">FPS</span>
+              <span>PC · PS5 · Xbox</span>
+            </div>
+            <h3 class="card-title">Sector Breach</h3>
+            <p class="card-text">
+              High-stakes extraction shooter combining destructible interiors
+              with crisp ballistic simulation.
+            </p>
+            <div class="card-footer">
+              <span>Squad Extraction</span>
+              <span class="rating-pill">8.7 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="sports-racing">
+            <div class="card-meta">
+              <span class="badge">Sports / Racing</span>
+              <span>PC · PS5 · Xbox</span>
+            </div>
+            <h3 class="card-title">Apex Rally 2027</h3>
+            <p class="card-text">
+              Point-to-point stage racing across wet tarmac, alpine snow, and
+              changing twilight conditions.
+            </p>
+            <div class="card-footer">
+              <span>Time Trial &amp; League</span>
+              <span class="rating-pill">9.0 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="sports-racing">
+            <div class="card-meta">
+              <span class="badge">Sports / Racing</span>
+              <span>PC · PS5 · Xbox</span>
+            </div>
+            <h3 class="card-title">Touchline FC 26</h3>
+            <p class="card-text">
+              Responsive midfield passing, career club management, and
+              cross-play online seasons.
+            </p>
+            <div class="card-footer">
+              <span>Career &amp; Online</span>
+              <span class="rating-pill">8.6 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="adventure">
+            <div class="card-meta">
+              <span class="badge">Adventure</span>
+              <span>PC · Switch · PS5</span>
+            </div>
+            <h3 class="card-title">Tides of Lantern Bay</h3>
+            <p class="card-text">
+              Sail between mist-covered islands to decode ancient sea charts and
+              restore forgotten lighthouses.
+            </p>
+            <div class="card-footer">
+              <span>Exploration</span>
+              <span class="rating-pill">8.9 / 10</span>
+            </div>
+          </article>
+
+          <article class="card game-card" data-genre="adventure">
+            <div class="card-meta">
+              <span class="badge">Adventure</span>
+              <span>PC · PS5</span>
+            </div>
+            <h3 class="card-title">Echoes Beneath</h3>
+            <p class="card-text">
+              A minimalist puzzle-adventure set inside a quiet subterranean
+              observatory powered by light and sound.
+            </p>
+            <div class="card-footer">
+              <span>Puzzle Story</span>
+              <span class="rating-pill">9.1 / 10</span>
+            </div>
+          </article>
+        </div>
+
+        <p id="games-empty" class="empty-state hidden">
+          No games found for the selected genre.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Gaming Hub. Built for players, kept clean.</p>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="genres.html">Genres</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="../js/genres.js"></script>
+  </body>
+</html>

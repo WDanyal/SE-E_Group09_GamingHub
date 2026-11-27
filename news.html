@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News — Gaming Hub</title>
+    <link rel="stylesheet" href="css/news.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">GH</span>
+          <span>Gaming Hub</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Toggle navigation"
+        >
+          Menu
+        </button>
+        <nav id="primary-nav" aria-label="Primary">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li>
+              <a class="nav-link active" href="news.html" aria-current="page"
+                >News</a
+              >
+            </li>
+            <li><a class="nav-link" href="genres.html">Genres</a></li>
+            <li><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="page-header">
+        <span class="page-eyebrow">Latest Dispatches</span>
+        <h1>Gaming News</h1>
+        <p class="page-lead">
+          Curated headlines across upcoming releases, major patches, esports
+          tournaments, and hardware announcements.
+        </p>
+      </section>
+
+      <section aria-label="News filter and articles">
+        <div class="filter-bar" role="group" aria-label="Filter news by topic">
+          <button
+            class="filter-btn active"
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="releases"
+            aria-pressed="false"
+          >
+            Releases
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="updates"
+            aria-pressed="false"
+          >
+            Updates
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="esports"
+            aria-pressed="false"
+          >
+            Esports
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="hardware"
+            aria-pressed="false"
+          >
+            Hardware
+          </button>
+        </div>
+
+        <div class="section-heading">
+          <h2>Recent Headlines</h2>
+          <span id="news-count" class="results-count">6 articles</span>
+        </div>
+
+        <div id="news-grid" class="card-grid">
+          <article class="card news-card" data-category="releases">
+            <div class="card-meta">
+              <span class="badge">Releases</span>
+              <time datetime="2026-11-24">Nov 24, 2026</time>
+            </div>
+            <h3 class="card-title">
+              Starfall Odyssey Locks In Global Launch Window for Early Spring
+            </h3>
+            <p class="card-text">
+              The co-op sci-fi action RPG revealed a new orbital shipyard zone and
+              confirmed cross-platform progression at launch.
+            </p>
+            <div class="card-footer">
+              <span>PC · PS5 · Xbox</span>
+              <span>3 min read</span>
+            </div>
+          </article>
+
+          <article class="card news-card" data-category="updates">
+            <div class="card-meta">
+              <span class="badge">Updates</span>
+              <time datetime="2026-11-22">Nov 22, 2026</time>
+            </div>
+            <h3 class="card-title">
+              Valor Front Patch 4.2 Reworks Ranked Matchmaking and Recoil Curves
+            </h3>
+            <p class="card-text">
+              Competitive queues now prioritize tighter latency brackets alongside
+              targeted balance tweaks to three flagship rifles.
+            </p>
+            <div class="card-footer">
+              <span>Patch Notes</span>
+              <span>4 min read</span>
+            </div>
+          </article>
+
+          <article class="card news-card" data-category="esports">
+            <div class="card-meta">
+              <span class="badge">Esports</span>
+              <time datetime="2026-11-20">Nov 20, 2026</time>
+            </div>
+            <h3 class="card-title">
+              Winter Masters Bracket Finalized With Eight Regional Champions
+            </h3>
+            <p class="card-text">
+              Upper-bracket qualifiers wrap up this weekend in Seoul, setting up
+              a double-elimination showdown for the $1.2M prize pool.
+            </p>
+            <div class="card-footer">
+              <span>Tournament</span>
+              <span>2 min read</span>
+            </div>
+          </article>
+
+          <article class="card news-card" data-category="hardware">
+            <div class="card-meta">
+              <span class="badge">Hardware</span>
+              <time datetime="2026-11-18">Nov 18, 2026</time>
+            </div>
+            <h3 class="card-title">
+              240Hz OLED Ultrawide Monitors Drop Below $700 Ahead of Holiday
+              Sales
+            </h3>
+            <p class="card-text">
+              Display makers are rolling out updated subpixel layouts and burn-in
+              warranties while bringing flagship panels to mid-tier budgets.
+            </p>
+            <div class="card-footer">
+              <span>Gear &amp; Displays</span>
+              <span>5 min read</span>
+            </div>
+          </article>
+
+          <article class="card news-card" data-category="releases">
+            <div class="card-meta">
+              <span class="badge">Releases</span>
+              <time datetime="2026-11-15">Nov 15, 2026</time>
+            </div>
+            <h3 class="card-title">
+              Apex Rally 2027 Adds Dynamic Weather and Classic Endurance Stages
+            </h3>
+            <p class="card-text">
+              The upcoming racer introduces real-time gravel degradation, night
+              stages, and full wheel force-feedback presets out of the box.
+            </p>
+            <div class="card-footer">
+              <span>Racing Sim</span>
+              <span>3 min read</span>
+            </div>
+          </article>
+
+          <article class="card news-card" data-category="updates">
+            <div class="card-meta">
+              <span class="badge">Updates</span>
+              <time datetime="2026-11-12">Nov 12, 2026</time>
+            </div>
+            <h3 class="card-title">
+              Hollow Crown Expansion Brings New Endgame Citadel and Photo Mode
+            </h3>
+            <p class="card-text">
+              Available free for all owners, the update adds a five-boss tower
+              challenge, armor dye loadouts, and frame-rate stability fixes.
+            </p>
+            <div class="card-footer">
+              <span>Free Expansion</span>
+              <span>3 min read</span>
+            </div>
+          </article>
+        </div>
+
+        <p id="news-empty" class="empty-state hidden">
+          No news articles match this category right now.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Gaming Hub. Built for players, kept clean.</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="genres.html">Genres</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="js/news.js"></script>
+  </body>
+</html>

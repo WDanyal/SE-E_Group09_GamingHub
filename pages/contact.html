@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Gaming Hub</title>
+    <link rel="stylesheet" href="../css/contact.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">GH</span>
+          <span>Gaming Hub</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Toggle navigation"
+        >
+          Menu
+        </button>
+        <nav id="primary-nav" aria-label="Primary">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="../index.html">Home</a></li>
+            <li><a class="nav-link" href="news.html">News</a></li>
+            <li><a class="nav-link" href="genres.html">Genres</a></li>
+            <li>
+              <a class="nav-link active" href="contact.html" aria-current="page"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="page-header">
+        <span class="page-eyebrow">Get In Touch</span>
+        <h1>Contact &amp; Feedback</h1>
+        <p class="page-lead">
+          Share a news tip, suggest a game for our genre directory, or send
+          feedback on the site.
+        </p>
+      </section>
+
+      <section class="contact-layout" aria-label="Contact form and details">
+        <div class="panel">
+          <form id="contact-form" class="form-grid" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                class="form-control"
+                placeholder="Alex Mercer"
+                autocomplete="name"
+                required
+              />
+              <span id="name-error" class="error-text" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                class="form-control"
+                placeholder="alex@example.com"
+                autocomplete="email"
+                required
+              />
+              <span
+                id="email-error"
+                class="error-text"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="topic">Topic</label>
+              <select id="topic" name="topic" class="form-control" required>
+                <option value="">Select a topic...</option>
+                <option value="feedback">General Feedback</option>
+                <option value="news-tip">News Tip</option>
+                <option value="game-suggestion">Game Suggestion</option>
+                <option value="bug-report">Site Bug Report</option>
+              </select>
+              <span
+                id="topic-error"
+                class="error-text"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                placeholder="Tell us what is on your mind..."
+                required
+              ></textarea>
+              <span
+                id="message-error"
+                class="error-text"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+
+            <div
+              id="form-status"
+              class="form-status hidden"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </form>
+        </div>
+
+        <aside class="panel" aria-label="Hub information">
+          <h2>Hub Desk</h2>
+          <p class="card-text">
+            We keep our inbox lightweight and read every submission from the
+            community.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <h3>News &amp; Patch Tips</h3>
+              <p>
+                Spotted an upcoming release date or major patch note? Include a
+                source link in your message.
+              </p>
+            </div>
+            <div class="info-item">
+              <h3>Directory Requests</h3>
+              <p>
+                Recommend indie or AAA titles you want featured under Action,
+                RPG, FPS, Sports/Racing, or Adventure.
+              </p>
+            </div>
+            <div class="info-item">
+              <h3>Response Window</h3>
+              <p>Typical reply time is 1–2 business days for inquiries.</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Gaming Hub. Built for players, kept clean.</p>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="genres.html">Genres</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="../js/contact.js"></script>
+  </body>
+</html>
