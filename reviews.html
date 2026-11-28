@@ -85,6 +85,105 @@
         <section aria-label="Review list">
           <div id="reviews-grid" class="grid grid-2"></div>
         </section>
+
+        <section class="section" aria-label="Submit a review">
+          <div class="section-header">
+            <h2 class="section-title">Submit a Review</h2>
+          </div>
+
+          <form id="review-form" class="card review-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="review-title-input">Game Title</label>
+                <input
+                  id="review-title-input"
+                  name="title"
+                  class="input"
+                  type="text"
+                  placeholder="e.g., Elden Ring (optional)"
+                  maxlength="80"
+                />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="review-genre-input">Genre</label>
+                <select id="review-genre-input" name="genre" class="select"></select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="review-platform-input">Platform</label>
+                <select id="review-platform-input" name="platform" class="select"></select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="review-score-input">Score (1–10)</label>
+                <input
+                  id="review-score-input"
+                  name="score"
+                  class="input tabular"
+                  type="number"
+                  min="1"
+                  max="10"
+                  step="0.1"
+                  value="8.5"
+                />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="review-text-input">
+                Review <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="review-text-input"
+                name="review"
+                class="textarea"
+                rows="4"
+                placeholder="Share your verdict, gameplay impressions, or performance notes..."
+                required
+                aria-describedby="review-form-feedback"
+              ></textarea>
+            </div>
+
+            <div class="form-grid form-grid-2">
+              <div class="form-field">
+                <label class="form-label" for="review-pros-input">Pros (comma-separated, optional)</label>
+                <input
+                  id="review-pros-input"
+                  name="pros"
+                  class="input"
+                  type="text"
+                  placeholder="e.g., Crisp combat, Stable 60 FPS"
+                />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="review-cons-input">Cons (comma-separated, optional)</label>
+                <input
+                  id="review-cons-input"
+                  name="cons"
+                  class="input"
+                  type="text"
+                  placeholder="e.g., Short campaign"
+                />
+              </div>
+            </div>
+
+            <div
+              id="review-form-feedback"
+              class="form-feedback"
+              role="alert"
+              aria-live="polite"
+              hidden
+            ></div>
+
+            <div class="form-actions">
+              <button type="submit" id="review-submit-btn" class="btn btn-primary">
+                Submit Review
+              </button>
+            </div>
+          </form>
+        </section>
       </div>
     </main>
 

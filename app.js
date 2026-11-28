@@ -349,9 +349,198 @@
     }
   }
 
+  const STORAGE_KEY = "gaminghub_user_reviews";
+
+  function loadStoredReviews() {
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (_err) {
+      return [];
+    }
+  }
+
+  function saveStoredReview(review) {
+    try {
+      const existing = loadStoredReviews();
+      existing.unshift(review);
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    } catch (_err) {
+      // Ignore storage errors when storage is unavailable or full.
+    }
+  }
+
+  function hydrateStoredReviews() {
+    const stored = loadStoredReviews();
+    const existingIds = new Set(GAMES.map((g) => g.id));
+    stored.forEach((item) => {
+      const validItem =
+        item &&
+        typeof item.id === "string" &&
+        typeof item.title === "string" &&
+        typeof item.verdict === "string" &&
+        Array.isArray(item.platforms) &&
+        item.scores &&
+        typeof item.scores.gameplay === "number";
+      if (validItem && !existingIds.has(item.id)) {
+        GAMES.unshift(item);
+        existingIds.add(item.id);
+      }
+    });
+  }
+
+  function parseTakeaways(raw) {
+    return String(raw || "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  function renderProsCons(pros, cons) {
+    const safePros = Array.isArray(pros) ? pros : [];
+    const safeCons = Array.isArray(cons) ? cons : [];
+    if (safePros.length === 0 && safeCons.length === 0) return "";
+
+    const proItems = safePros.length
+      ? safePros.map((item) => `<li>${escapeHtml(item)}</li>`).join("")
+      : `<li class="takeaway-empty">None listed</li>`;
+    const conItems = safeCons.length
+      ? safeCons.map((item) => `<li>${escapeHtml(item)}</li>`).join("")
+      : `<li class="takeaway-empty">None listed</li>`;
+
+    return `
+      <div class="pros-cons">
+        <div>
+          <h3 class="pros-cons-title is-pro">Pros</h3>
+          <ul class="takeaway-list is-pro">${proItems}</ul>
+        </div>
+        <div>
+          <h3 class="pros-cons-title is-con">Cons</h3>
+          <ul class="takeaway-list is-con">${conItems}</ul>
+        </div>
+      </div>
+    `;
+  }
+
   /* ------------------------------------------------------------------------
      Reviews Page
      ------------------------------------------------------------------------ */
+  function setupReviewForm(onReviewAdded) {
+    const form = document.getElementById("review-form");
+    const titleInput = document.getElementById("review-title-input");
+    const genreInput = document.getElementById("review-genre-input");
+    const platformInput = document.getElementById("review-platform-input");
+    const scoreInput = document.getElementById("review-score-input");
+    const textInput = document.getElementById("review-text-input");
+    const prosInput = document.getElementById("review-pros-input");
+    const consInput = document.getElementById("review-cons-input");
+    const feedback = document.getElementById("review-form-feedback");
+
+    if (!form || !textInput || !feedback) return;
+
+    if (genreInput) {
+      const genres = getUniqueGenres().filter((g) => g !== "All");
+      genreInput.innerHTML = genres
+        .map((g) => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`)
+        .join("");
+    }
+
+    if (platformInput) {
+      const platforms = getUniquePlatforms().filter((p) => p !== "All");
+      platformInput.innerHTML = platforms
+        .map((p) => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`)
+        .join("");
+    }
+
+    function showFeedback(message, type) {
+      feedback.textContent = message;
+      feedback.classList.remove("is-error", "is-success");
+      feedback.classList.add(type === "error" ? "is-error" : "is-success");
+      feedback.hidden = false;
+    }
+
+    function clearFeedback() {
+      feedback.textContent = "";
+      feedback.classList.remove("is-error", "is-success");
+      feedback.hidden = true;
+    }
+
+    textInput.addEventListener("input", () => {
+      if (textInput.getAttribute("aria-invalid") === "true" && textInput.value.trim().length > 0) {
+        textInput.removeAttribute("aria-invalid");
+        clearFeedback();
+      }
+    });
+
+    if (scoreInput) {
+      scoreInput.addEventListener("input", () => {
+        if (scoreInput.getAttribute("aria-invalid") === "true") {
+          const val = Number(scoreInput.value);
+          if (Number.isFinite(val) && val >= 1 && val <= 10) {
+            scoreInput.removeAttribute("aria-invalid");
+            clearFeedback();
+          }
+        }
+      });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      textInput.removeAttribute("aria-invalid");
+      if (scoreInput) scoreInput.removeAttribute("aria-invalid");
+
+      const reviewText = textInput.value.trim();
+      if (!reviewText) {
+        textInput.setAttribute("aria-invalid", "true");
+        showFeedback("Please enter a review before submitting. Empty reviews cannot be submitted.", "error");
+        textInput.focus();
+        return;
+      }
+
+      const rawScore = scoreInput ? Number(scoreInput.value) : 8.5;
+      if (scoreInput && (!scoreInput.value.trim() || !Number.isFinite(rawScore) || rawScore < 1 || rawScore > 10)) {
+        scoreInput.setAttribute("aria-invalid", "true");
+        showFeedback("Please enter a valid score between 1.0 and 10.0.", "error");
+        scoreInput.focus();
+        return;
+      }
+
+      const roundedScore = Number(rawScore.toFixed(1));
+      const title = titleInput && titleInput.value.trim() ? titleInput.value.trim() : "Community Review";
+      const genre = genreInput && genreInput.value ? genreInput.value : "Action RPG";
+      const platform = platformInput && platformInput.value ? platformInput.value : "PC";
+      const pros = parseTakeaways(prosInput ? prosInput.value : "");
+      const cons = parseTakeaways(consInput ? consInput.value : "");
+
+      const newReview = {
+        id: `user-review-${Date.now()}`,
+        title,
+        genre,
+        developer: "Community",
+        year: new Date().getFullYear(),
+        platforms: [platform],
+        price: "—",
+        playtime: "User Review",
+        fpsTarget: "—",
+        scores: {
+          gameplay: roundedScore,
+          visuals: roundedScore,
+          performance: roundedScore
+        },
+        verdict: reviewText,
+        pros,
+        cons
+      };
+
+      onReviewAdded(newReview);
+      form.reset();
+      if (scoreInput) scoreInput.value = "8.5";
+      showFeedback("Your review has been submitted.", "success");
+    });
+  }
+
   function initReviewsPage() {
     const genreContainer = document.getElementById("review-genre-filters");
     const platformSelect = document.getElementById("review-platform-select");
@@ -469,25 +658,18 @@
 
               <p class="review-verdict">${escapeHtml(game.verdict)}</p>
 
-              <div class="pros-cons">
-                <div>
-                  <h3 class="pros-cons-title is-pro">Pros</h3>
-                  <ul class="takeaway-list is-pro">
-                    ${game.pros.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-                  </ul>
-                </div>
-                <div>
-                  <h3 class="pros-cons-title is-con">Cons</h3>
-                  <ul class="takeaway-list is-con">
-                    ${game.cons.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-                  </ul>
-                </div>
-              </div>
+              ${renderProsCons(game.pros, game.cons)}
             </article>
           `;
         })
         .join("");
     }
+
+    setupReviewForm((newReview) => {
+      GAMES.unshift(newReview);
+      saveStoredReview(newReview);
+      renderReviews();
+    });
 
     renderReviews();
   }
@@ -802,6 +984,7 @@
      ------------------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", () => {
     setupNavigation();
+    hydrateStoredReviews();
     const page = document.body.dataset.page;
     if (page === "home") initHomePage();
     if (page === "reviews") initReviewsPage();

@@ -71,7 +71,8 @@ a {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -585,6 +586,95 @@ main {
   font-weight: 700;
 }
 
+.takeaway-list li.takeaway-empty {
+  padding-left: 0;
+  color: var(--text-muted);
+}
+
+.takeaway-list li.takeaway-empty::before {
+  content: none;
+}
+
+.review-form {
+  gap: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.form-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.required-mark {
+  color: var(--negative);
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 96px;
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  transition: border-color var(--transition);
+}
+
+.textarea:hover {
+  border-color: var(--border-strong);
+}
+
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"] {
+  border-color: var(--negative);
+}
+
+.form-feedback {
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.form-feedback.is-error {
+  color: var(--negative);
+  background-color: var(--negative-soft);
+  border-color: rgba(251, 113, 133, 0.35);
+}
+
+.form-feedback.is-success {
+  color: var(--positive);
+  background-color: var(--positive-soft);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 /* Ratings Page
    ========================================================================== */
 
@@ -780,7 +870,8 @@ main {
    ========================================================================== */
 
 @media (max-width: 900px) {
-  .grid-3 {
+  .grid-3,
+  .form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -818,7 +909,9 @@ main {
   .grid-3,
   .summary-strip,
   .compare-cards,
-  .pros-cons {
+  .pros-cons,
+  .form-grid,
+  .form-grid-2 {
     grid-template-columns: 1fr;
   }
 }
