@@ -51,6 +51,22 @@
             Shooter
           </button>
         </div>
+        <input
+          id="game-search"
+          type="search"
+          placeholder="Search games..."
+          aria-label="Search trending games"
+          style="
+            padding: 0.45rem 0.85rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-subtle);
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            font: inherit;
+            font-size: 0.88rem;
+            min-width: 200px;
+          "
+        />
         <div class="watchlist-counter">
           Saved in Watchlist: <strong id="watchlist-count">0</strong>
         </div>
@@ -207,9 +223,17 @@
         </article>
       </section>
 
-      <p id="filter-empty" class="section-subtitle is-hidden">
-        No games match the selected filter.
-      </p>
+      <div
+        id="filter-empty"
+        class="meta-panel is-hidden"
+        role="status"
+        aria-live="polite"
+        style="margin-top: 1.5rem; text-align: center;"
+      >
+        <p id="filter-empty-message" class="section-subtitle" style="margin: 0;">
+          No games match your current filter or search.
+        </p>
+      </div>
     </main>
 
     <footer class="site-footer">
