@@ -6,19 +6,21 @@
 (function () {
   const WATCHLIST_KEY = "gamingHubWatchlist";
   const FILTER_KEY = "gamingHubSelectedFilter";
+  const CHEAT_BOOKMARKS_KEY = "gamingHubGtaCheats";
 
-  function loadWatchlist() {
+  function loadSavedList(key) {
     try {
-      const saved = localStorage.getItem(WATCHLIST_KEY);
-      return saved ? JSON.parse(saved) : [];
+      const saved = localStorage.getItem(key);
+      const parsed = saved ? JSON.parse(saved) : [];
+      return Array.isArray(parsed) ? parsed : [];
     } catch {
       return [];
     }
   }
 
-  function saveWatchlist(list) {
+  function saveList(key, list) {
     try {
-      localStorage.setItem(WATCHLIST_KEY, JSON.stringify(list));
+      localStorage.setItem(key, JSON.stringify(list));
     } catch {
       // Ignore storage failures in restricted browsing modes
     }
@@ -27,7 +29,7 @@
   function initWatchlist() {
     const buttons = document.querySelectorAll("[data-watchlist-id]");
     const countEl = document.getElementById("watchlist-count");
-    let watchlist = loadWatchlist();
+    let watchlist = loadSavedList(WATCHLIST_KEY);
 
     function syncUI() {
       buttons.forEach((btn) => {
@@ -53,7 +55,7 @@
           watchlist.push(id);
         }
 
-        saveWatchlist(watchlist);
+        saveList(WATCHLIST_KEY, watchlist);
         syncUI();
       });
     });
@@ -148,8 +150,103 @@
     applyFilters();
   }
 
+  async function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        // Fall through to legacy fallback
+      }
+    }
+
+    const tempInput = document.createElement("textarea");
+    tempInput.value = text;
+    tempInput.setAttribute("readonly", "");
+    tempInput.style.position = "absolute";
+    tempInput.style.left = "-9999px";
+    document.body.appendChild(tempInput);
+    tempInput.select();
+
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch {
+      copied = false;
+    }
+    document.body.removeChild(tempInput);
+    return copied;
+  }
+
+  function initGtaCheats() {
+    const toggleBtn = document.getElementById("toggle-cheats-btn");
+    const cheatsPanel = document.getElementById("cheats-panel");
+    if (!toggleBtn || !cheatsPanel) return;
+
+    const bookmarkButtons = document.querySelectorAll("[data-cheat-bookmark]");
+    const copyButtons = document.querySelectorAll("[data-copy-code]");
+    const bookmarkCountEl = document.getElementById("cheats-bookmark-count");
+    let bookmarkedCheats = loadSavedList(CHEAT_BOOKMARKS_KEY);
+
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = cheatsPanel.classList.toggle("is-hidden");
+      const isExpanded = !isHidden;
+      toggleBtn.setAttribute("aria-expanded", String(isExpanded));
+      toggleBtn.textContent = isExpanded
+        ? "Hide Cheats & Codes"
+        : "Show Cheats & Codes";
+    });
+
+    function syncBookmarks() {
+      bookmarkButtons.forEach((btn) => {
+        const id = btn.dataset.cheatBookmark;
+        const isSaved = bookmarkedCheats.includes(id);
+        btn.setAttribute("aria-pressed", String(isSaved));
+        btn.textContent = isSaved ? "Bookmarked" : "Bookmark";
+      });
+
+      if (bookmarkCountEl) {
+        bookmarkCountEl.textContent = String(bookmarkedCheats.length);
+      }
+    }
+
+    bookmarkButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.cheatBookmark;
+        if (!id) return;
+
+        if (bookmarkedCheats.includes(id)) {
+          bookmarkedCheats = bookmarkedCheats.filter((item) => item !== id);
+        } else {
+          bookmarkedCheats.push(id);
+        }
+
+        saveList(CHEAT_BOOKMARKS_KEY, bookmarkedCheats);
+        syncBookmarks();
+      });
+    });
+
+    copyButtons.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const code = btn.dataset.copyCode;
+        if (!code) return;
+
+        const copied = await copyToClipboard(code);
+        btn.textContent = copied ? "Copied!" : "Copy failed";
+
+        clearTimeout(btn._copyTimer);
+        btn._copyTimer = setTimeout(() => {
+          btn.textContent = "Copy";
+        }, 1500);
+      });
+    });
+
+    syncBookmarks();
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initWatchlist();
     initGenreFilter();
+    initGtaCheats();
   });
 })();
